@@ -54,3 +54,5 @@ sysinfo.txt
 crashlytics-build.properties
 
 *.meta
+Library/*
+*.csproj
