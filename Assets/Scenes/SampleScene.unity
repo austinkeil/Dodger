@@ -509,7 +509,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3416a03f24bfaac46aeb6c2f63c4d2d1, type: 2}
+  - {fileID: 2100000, guid: f0a34cbc57fe2eb49a52bd4781ec947c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -705,6 +705,9 @@ MonoBehaviour:
   size: {x: 1, y: 5, z: 5}
   Projectileprefab: {fileID: 1365263897754131095, guid: e4fc50fdfc54beb40bff650578f3487f,
     type: 3}
+  xRotation: 0
+  yRotation: 0
+  zRotation: 0
 --- !u!4 &2044540159
 Transform:
   m_ObjectHideFlags: 0
