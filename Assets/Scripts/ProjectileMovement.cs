@@ -21,4 +21,11 @@ public class ProjectileMovement : MonoBehaviour
         }
         
     }
+    
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "Player"){
+            Debug.Log("Collision detected!");
+        }
+    }
 }
