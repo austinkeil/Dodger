@@ -8,9 +8,14 @@ public class ProjectileGeneration : MonoBehaviour
     public Vector3 center;
     public Vector3 size;
     public GameObject Projectileprefab;
+    public float xRotation;
+    public float yRotation;
+    public float zRotation;
+
     // Start is called before the first frame update
     void Start()
     {
+
         InvokeRepeating("SpawnProjectile", 0, rate);
     }
 
@@ -23,7 +28,7 @@ public class ProjectileGeneration : MonoBehaviour
     {
         Vector3 pos = transform.localPosition + center + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2),
                           Random.Range(-size.z / 2, size.z / 2));
-        Instantiate(Projectileprefab, pos, Quaternion.identity);
+        Instantiate(Projectileprefab, pos, Quaternion.Euler(new Vector3(xRotation, yRotation, zRotation)));
     }
 
     private void OnDrawGizmosSelected()
