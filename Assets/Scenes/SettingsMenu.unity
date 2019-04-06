@@ -2646,6 +2646,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsMenu: {fileID: 1629030982}
+  DifficultyDropdown: {fileID: 0}
+  SkinDropdown: {fileID: 0}
 --- !u!1 &1929156118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2903,7 +2905,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2032353608}
+      - m_Target: {fileID: 1914577656}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:

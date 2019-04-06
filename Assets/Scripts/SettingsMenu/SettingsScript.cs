@@ -2,21 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SettingsScript : MonoBehaviour
 {
     public GameObject settingsMenu;
+
+    public Dropdown DifficultyDropdown;
+    public Dropdown SkinDropdown;
     
+    List<string> Difficulties = new List<string>() {"Easy", "Normal", "Hard"};
+
+    List<string> Skins = new List<string>() {"Pies", "Poop", "Spooky"};
     
-    // Start is called before the first frame update
     void Start()
     {
         
+        populateSkinsList();
+        populateDifficultyList();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    
+    
+    public void DifficultyMenuChanged(int index)
     {
+        
+        
         
     }
 
@@ -26,6 +37,16 @@ public class SettingsScript : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
 
 
+    }
+
+    public void populateDifficultyList()
+    {
+        DifficultyDropdown.AddOptions(Difficulties);
+    }
+
+    public void populateSkinsList()
+    {
+        SkinDropdown.AddOptions(Skins);
     }
 
 }
