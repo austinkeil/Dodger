@@ -556,8 +556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecc04790373d5f469130261b840c6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Difficulty: 
-  Skin: 
+  Difficulty: Easy
+  Skin: Spooky
 --- !u!4 &784802365
 Transform:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ReturnScript : MonoBehaviour
+public class PauseScript : MonoBehaviour
 {
     public GameObject pauseMenu;
     public bool isPaused;
@@ -41,7 +41,7 @@ public class ReturnScript : MonoBehaviour
 
     public void ReturnToMain(int sceneIndex)
     {
-        
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneIndex);
     }
 

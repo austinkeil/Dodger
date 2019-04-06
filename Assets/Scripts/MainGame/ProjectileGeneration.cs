@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileGeneration : MonoBehaviour
 {
-    public float rate = 0.3f;
+    public float rate;
     public Vector3 center = new Vector3(2f, 2.5f, 2.5f);
     public Vector3 size = new Vector3(1f, 5f, 5f);
     public GameObject Projectileprefab;
@@ -15,8 +15,32 @@ public class ProjectileGeneration : MonoBehaviour
     {
 		player = GameObject.FindGameObjectWithTag("Player");
 		playerHealth = player.GetComponent<PlayerHealth>();
-		
+		if (GameSettings.Instance != null)SetDifficulty();
         InvokeRepeating("SpawnProjectile", 0, rate);
+    }
+
+
+    void SetDifficulty()
+    {
+
+	    if (GameSettings.Instance.Difficulty.Equals("Easy"))
+	    {
+
+		    rate = 1f;
+
+	    }
+	    
+	    else if (GameSettings.Instance.Difficulty.Equals("Normal"))
+
+	    {
+		    rate = 0.1f;
+	    }
+
+	    else if (GameSettings.Instance.Difficulty.Equals("Hard"))
+	    {
+		    rate = 0.00005f;
+	    }
+	    
     }
 
     // Update is called once per frame

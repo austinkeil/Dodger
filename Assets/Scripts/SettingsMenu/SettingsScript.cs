@@ -8,12 +8,12 @@ public class SettingsScript : MonoBehaviour
 {
     public GameObject settingsMenu;
 
-    public Dropdown DifficultyDropdown;
-    public Dropdown SkinDropdown;
+    public Dropdown difficultyDropdown;
+    public Dropdown skinDropdown;
     
-    List<string> Difficulties = new List<string>() {"Easy", "Normal", "Hard"};
+    List<string> difficulties = new List<string>() {"Easy", "Normal", "Hard"};
 
-    List<string> Skins = new List<string>() {"Pies", "Poop", "Spooky"};
+    List<string> skins = new List<string>() {"Pies", "Poop", "Spooky"};
     
     void Start()
     {
@@ -26,9 +26,16 @@ public class SettingsScript : MonoBehaviour
     
     public void DifficultyMenuChanged(int index)
     {
-        
-        
-        
+
+        GameSettings.Instance.Difficulty = difficulties[index];
+
+    }
+
+    public void SkinMenuChanged(int index)
+    {
+
+        GameSettings.Instance.Skin = skins[index];
+
     }
 
     public void MainMenu(int sceneIndex)
@@ -41,12 +48,12 @@ public class SettingsScript : MonoBehaviour
 
     public void populateDifficultyList()
     {
-        DifficultyDropdown.AddOptions(Difficulties);
+        difficultyDropdown.AddOptions(difficulties);
     }
 
     public void populateSkinsList()
     {
-        SkinDropdown.AddOptions(Skins);
+        skinDropdown.AddOptions(skins);
     }
 
 }
