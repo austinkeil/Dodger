@@ -408,7 +408,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 734180862}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 855626307}
+        m_MethodName: ChangeScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &734180862
@@ -527,51 +538,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771769193}
   m_CullTransparentMesh: 0
---- !u!1 &784802363
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 784802365}
-  - component: {fileID: 784802364}
-  m_Layer: 0
-  m_Name: GameMaster
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &784802364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784802363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ecc04790373d5f469130261b840c6f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Difficulty: Easy
-  Skin: Spooky
---- !u!4 &784802365
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784802363}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.20024, y: -100, z: 0.69057727}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &855626302
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,6 +550,7 @@ GameObject:
   - component: {fileID: 855626306}
   - component: {fileID: 855626305}
   - component: {fileID: 855626304}
+  - component: {fileID: 855626307}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -671,6 +638,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &855626307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855626302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db361d1061265d24b92271b096c6e554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &898606697
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +741,6 @@ GameObject:
   - component: {fileID: 1151378703}
   - component: {fileID: 1151378702}
   - component: {fileID: 1151378701}
-  - component: {fileID: 1151378704}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -830,8 +808,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1151378704}
-        m_MethodName: StartingGame
+      - m_Target: {fileID: 855626307}
+        m_MethodName: ChangeScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -880,18 +858,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151378699}
   m_CullTransparentMesh: 0
---- !u!114 &1151378704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151378699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db361d1061265d24b92271b096c6e554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1165232078
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,7 +870,6 @@ GameObject:
   - component: {fileID: 1165232082}
   - component: {fileID: 1165232081}
   - component: {fileID: 1165232080}
-  - component: {fileID: 1165232083}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -972,8 +937,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1165232083}
-        m_MethodName: StartSettings
+      - m_Target: {fileID: 855626307}
+        m_MethodName: ChangeScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1022,18 +987,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165232078}
   m_CullTransparentMesh: 0
---- !u!114 &1165232083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165232078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 523869410affff4489ae89ce65339d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1646927490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,7 +1302,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1936051633}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 855626302}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1936051633

@@ -19,7 +19,12 @@ public class SettingsScript : MonoBehaviour
     {
         
         populateSkinsList();
+        
         populateDifficultyList();
+
+        if (PlayerPrefs.GetInt("Difficulty") != null) difficultyDropdown.value = PlayerPrefs.GetInt("Difficulty");
+        
+        if (PlayerPrefs.GetInt("Skin") != null) skinDropdown.value = PlayerPrefs.GetInt("Skin");
     }
     
     
@@ -27,14 +32,16 @@ public class SettingsScript : MonoBehaviour
     public void DifficultyMenuChanged(int index)
     {
 
-        GameSettings.Instance.Difficulty = difficulties[index];
+
+        PlayerPrefs.SetInt("Difficulty", index);
 
     }
 
     public void SkinMenuChanged(int index)
     {
 
-        GameSettings.Instance.Skin = skins[index];
+
+        PlayerPrefs.SetInt("Skin", index);
 
     }
 

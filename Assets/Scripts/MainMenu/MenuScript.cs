@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartGame : MonoBehaviour
+public class MenuScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void StartingGame(int sceneIndex)
+    public void ChangeScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
 

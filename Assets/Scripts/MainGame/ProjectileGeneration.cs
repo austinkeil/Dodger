@@ -1,9 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
+using Random = UnityEngine.Random;
 
 public class ProjectileGeneration : MonoBehaviour
 {
+	
+	enum Difficulty {EASY = 0, NORMAL, HARD};
     public float rate;
     public Vector3 center = new Vector3(2f, 2.5f, 2.5f);
     public Vector3 size = new Vector3(1f, 5f, 5f);
@@ -15,7 +20,7 @@ public class ProjectileGeneration : MonoBehaviour
     {
 		player = GameObject.FindGameObjectWithTag("Player");
 		playerHealth = player.GetComponent<PlayerHealth>();
-		if (GameSettings.Instance != null)SetDifficulty();
+		if (PlayerPrefs.GetInt("Difficulty") != null)SetDifficulty();
         InvokeRepeating("SpawnProjectile", 0, rate);
     }
 
@@ -23,24 +28,26 @@ public class ProjectileGeneration : MonoBehaviour
     void SetDifficulty()
     {
 
-	    if (GameSettings.Instance.Difficulty.Equals("Easy"))
+	    switch (PlayerPrefs.GetInt("Difficulty"))
 	    {
-
-		    rate = 1f;
-
+		    case (int)Difficulty.EASY : rate = 1f;
+			    
+			    break;
+		    
+		    case (int)Difficulty.NORMAL : rate = 0.1f;
+			    
+			    break;
+		    
+		    case (int)Difficulty.HARD : rate = 0.001f;
+			    
+			    break;
+		    
 	    }
+
 	    
-	    else if (GameSettings.Instance.Difficulty.Equals("Normal"))
 
-	    {
-		    rate = 0.1f;
-	    }
+	  
 
-	    else if (GameSettings.Instance.Difficulty.Equals("Hard"))
-	    {
-		    rate = 0.00005f;
-	    }
-	    
     }
 
     // Update is called once per frame
