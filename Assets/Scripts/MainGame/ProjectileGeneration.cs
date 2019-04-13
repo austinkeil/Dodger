@@ -15,6 +15,11 @@ public class ProjectileGeneration : MonoBehaviour
     public GameObject Projectileprefab;
 	GameObject player;                          // Reference to the player GameObject.
 	PlayerHealth playerHealth;                  // Reference to the player's health.
+
+	public Material[] materials;
+
+	private Renderer rend;
+	
     // Start is called before the first frame update
     void Start()
     {
