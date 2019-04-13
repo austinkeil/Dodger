@@ -16,4 +16,23 @@ public class ScoreScript : MonoBehaviour
         Debug.Log("Score Increased!");
 
     }
+
+    public void SaveScore()
+    {
+        int scoreNum = Convert.ToInt32(score.text);
+
+        int index = 10;
+
+        while (scoreNum > Convert.ToInt32(PlayerPrefs.GetString("Score" + index.ToString())) && index > 0)
+        {
+            
+            PlayerPrefs.SetString("Score" + (index+1).ToString(), PlayerPrefs.GetString("Score" + (index).ToString()));
+            index--;
+        }
+
+        PlayerPrefs.SetString("Score" + (index + 1).ToString(), scoreNum.ToString());
+
+
+
+    }
 }

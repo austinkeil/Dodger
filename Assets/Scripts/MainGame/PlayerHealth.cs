@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
     //AudioSource playerAudio;                                    // Reference to the AudioSource component.
     public bool isDead;                                         // Whether the player is dead.
     bool damaged;                                               // True when the player gets damaged.
+    public Image fill;
 
 
     void Awake ()
@@ -87,7 +89,8 @@ public class PlayerHealth : MonoBehaviour
         // Turn off the movement and shooting scripts -- for our project we should figure out something comperable
         //playerMovement.enabled = false;
         //playerShooting.enabled = false;
-		
+        fill.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
 		Debug.Log("You died!");
+        GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreScript>().SaveScore();
     }       
 }

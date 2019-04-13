@@ -42,6 +42,7 @@ public class PauseScript : MonoBehaviour
     public void ReturnToMain(int sceneIndex)
     {
         Time.timeScale = 1f;
+        if(!GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().isDead)GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreScript>().SaveScore();
         SceneManager.LoadScene(sceneIndex);
     }
 
