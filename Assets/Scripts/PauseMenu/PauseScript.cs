@@ -7,6 +7,9 @@ public class PauseScript : MonoBehaviour
 {
     public GameObject pauseMenu;
     public bool isPaused;
+
+    
+    
     
     
     // Start is called before the first frame update
@@ -42,8 +45,15 @@ public class PauseScript : MonoBehaviour
     public void ReturnToMain(int sceneIndex)
     {
         Time.timeScale = 1f;
-        if(!GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().isDead)GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreScript>().SaveScore();
+      //  if(!GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().isDead)GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreScript>().CheckScore();
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void DeathMenuButton(int sceneIndex)
+    {
+        GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreScript>().SaveScore();
+        SceneManager.LoadScene(sceneIndex);
+        
     }
 
 }

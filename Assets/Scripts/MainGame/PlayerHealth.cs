@@ -15,6 +15,9 @@ public class PlayerHealth : MonoBehaviour
     public Color flashColour = new Color(1f, 0f, 0f, 0.2f);     // The colour the damageImage is set to, to flash.
 	public Color deathTextColor = new Color(.43f, .15f, .15f);	//The color of the death text
 
+    public GameObject playerNamePanel;
+	
+    public GameObject deathMenu;
     //AudioSource playerAudio;                                    // Reference to the AudioSource component.
     public bool isDead;                                         // Whether the player is dead.
     bool damaged;                                               // True when the player gets damaged.
@@ -68,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
         // If the player has lost all it's health and the death flag hasn't been set yet...
         if(currentHealth <= 0 && !isDead)
         {
-            // ... it should die.
+            // ... they should die.
             Death ();
         }
     }
@@ -91,6 +94,14 @@ public class PlayerHealth : MonoBehaviour
         //playerShooting.enabled = false;
         fill.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
 		Debug.Log("You died!");
-        GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreScript>().SaveScore();
-    }       
+
+
+        GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreScript>().CheckScore();
+        
+        Debug.Log("enabling death menu");
+        // Ask if they would like to start again or quit
+        deathMenu.SetActive(true);
+        
+    }   
+
 }

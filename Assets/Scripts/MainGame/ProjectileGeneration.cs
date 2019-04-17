@@ -25,6 +25,7 @@ public class ProjectileGeneration : MonoBehaviour
     {
 		player = GameObject.FindGameObjectWithTag("Player");
 		playerHealth = player.GetComponent<PlayerHealth>();
+		if (PlayerPrefs.GetInt("Skin") != null)SetSkin();
 		if (PlayerPrefs.GetInt("Difficulty") != null)SetDifficulty();
         InvokeRepeating("SpawnProjectile", 0, rate);
     }
@@ -49,9 +50,32 @@ public class ProjectileGeneration : MonoBehaviour
 		    
 	    }
 
-	    
+    }
 
-	  
+    void SetSkin()
+    {
+	    switch (PlayerPrefs.GetInt("Skin"))
+	    {
+		    case 0 :
+
+			    Projectileprefab.GetComponent<MeshRenderer>().material = materials[0];
+			    Debug.Log("Setting Skin to 0");
+			    break;
+		    
+		    case 1 :
+
+			    Projectileprefab.GetComponent<MeshRenderer>().material = materials[1];
+			    
+			    break;
+		    
+		    case 2 :
+
+			    Projectileprefab.GetComponent<MeshRenderer>().material = materials[2];
+			    
+			    break;
+		    
+		    
+	    }
 
     }
 
@@ -73,6 +97,7 @@ public class ProjectileGeneration : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+	    
         Gizmos.color = new Color(1,0,0,5f);
         Gizmos.DrawCube(transform.localPosition + center, size);
     }
