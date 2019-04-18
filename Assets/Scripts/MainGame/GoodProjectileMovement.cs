@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProjectileMovement : MonoBehaviour
+public class GoodProjectileMovement : MonoBehaviour
 {
     public float speed;
     public Vector3 dir;
 	GameObject player;                          // Reference to the player GameObject.
 	PlayerHealth playerHealth;                  // Reference to the player's health.
-    public int attackDamage = 20;               // The amount of health taken away per attack.
-    private ScoreScript score;
+    public int attackDamage = 20;
+	private ScoreScript score;
 
 	// Start is called before the first frame update	
 	void Start()
@@ -36,7 +36,6 @@ public class ProjectileMovement : MonoBehaviour
 
         if (transform.localPosition.x < -50)
         {
-	        score.IncreaseScore();
             Destroy(gameObject);
             Debug.Log("Item destroyed!!!");
         }
@@ -47,8 +46,8 @@ public class ProjectileMovement : MonoBehaviour
 	void OnCollisionEnter(Collision col)
 	{
 		if (col.gameObject.name == "Player"){
-			Debug.Log("Collision detected!");
-			playerHealth.TakeDamage(attackDamage);
+			Debug.Log("Good Collision detected!");
+			playerHealth.TakeHealth(attackDamage);
 		}
 	}
 	

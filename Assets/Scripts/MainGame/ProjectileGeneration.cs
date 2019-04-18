@@ -12,10 +12,12 @@ public class ProjectileGeneration : MonoBehaviour
     public float rate;
     public Vector3 center = new Vector3(2f, 2.5f, 2.5f);
     public Vector3 size = new Vector3(1f, 5f, 5f);
-    public GameObject Projectileprefab;
-	GameObject player;                          // Reference to the player GameObject.
+    public GameObject evilProjectilePrefab;
+    public GameObject goodProjectilePrefab;
+    GameObject player;                          // Reference to the player GameObject.
 	PlayerHealth playerHealth;                  // Reference to the player's health.
-
+	private float chanceOfBeingGood = .2f;
+	
 	public Material[] materials;
 
 	private Renderer rend;
@@ -49,10 +51,6 @@ public class ProjectileGeneration : MonoBehaviour
 		    
 	    }
 
-	    
-
-	  
-
     }
 
     // Update is called once per frame
@@ -68,7 +66,16 @@ public class ProjectileGeneration : MonoBehaviour
     {
         Vector3 pos = transform.localPosition + center + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2),
                           Random.Range(-size.z / 2, size.z / 2));
-        Instantiate(Projectileprefab, pos, Quaternion.identity);
+        
+        float goodOrEvil = Random.Range(0f, 1f);
+        if (goodOrEvil < chanceOfBeingGood)
+        {
+	        Instantiate(goodProjectilePrefab, pos, Quaternion.identity);
+        }
+        else
+        {
+	        Instantiate(evilProjectilePrefab, pos, Quaternion.identity);
+        }
     }
 
     private void OnDrawGizmosSelected()
