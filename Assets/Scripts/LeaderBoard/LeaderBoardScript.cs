@@ -12,13 +12,16 @@ public class LeaderBoardScript : MonoBehaviour
     public GameObject thisCanvas;
     public Font scoreFont;
     public Color scoreColor;
+    public int linespacing = 25;
+    public int columnSpacing = 400;
     
-    
+        
     void Start()
     {
         GenerateLeaderBoard();
 
     }
+
 
     void GenerateLeaderBoard()
     {
@@ -45,8 +48,10 @@ public class LeaderBoardScript : MonoBehaviour
         }
     }
 
+    // creates a text object and places it in the column and lin
     void generateText(String s, int column, int line, int size)
     {
+        
         GameObject textObject = new GameObject() ;
 
         textObject.transform.parent = thisCanvas.transform;
@@ -60,12 +65,13 @@ public class LeaderBoardScript : MonoBehaviour
 
         RectTransform rectTransform = text.GetComponent<RectTransform>();
         
-        rectTransform.localPosition = new Vector3(-200 + 400 * column, 100 - 25 * (line), 0);
+        rectTransform.localPosition = new Vector3(-200 + columnSpacing * column, 100 - linespacing * (line), 0);
         rectTransform.sizeDelta = new Vector2(160, 40);
         
         
     }
 
+    // Resets all of the leader boards
     public void ResetScores(int sceneIndex)
     {
         for (int i = 0; i < 11; ++i)
@@ -81,12 +87,13 @@ public class LeaderBoardScript : MonoBehaviour
         
     }
 
+    // returns to the main menu
     public void ChangeScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
         
     }
 
-    // Update is called once per frame
+
 
 }

@@ -21,7 +21,8 @@ public class SettingsScript : MonoBehaviour
         populateSkinsList();
         
         populateDifficultyList();
-
+        
+        // starts the dropdown menu items at what they are currently set to
         if (PlayerPrefs.GetInt("Difficulty") != null) difficultyDropdown.value = PlayerPrefs.GetInt("Difficulty");
         
         if (PlayerPrefs.GetInt("Skin") != null) skinDropdown.value = PlayerPrefs.GetInt("Skin");
@@ -29,22 +30,23 @@ public class SettingsScript : MonoBehaviour
     
     
     
+    //sets the preferences difficulty to whatever was selected
     public void DifficultyMenuChanged(int index)
     {
-
 
         PlayerPrefs.SetInt("Difficulty", index);
 
     }
 
+    //sets the preferences skin to whatever was selected
     public void SkinMenuChanged(int index)
     {
-
 
         PlayerPrefs.SetInt("Skin", index);
 
     }
 
+    // loads the main menu
     public void MainMenu(int sceneIndex)
     {
 
@@ -53,11 +55,13 @@ public class SettingsScript : MonoBehaviour
 
     }
 
+    // populates the difficulty dropdown menu
     public void populateDifficultyList()
     {
         difficultyDropdown.AddOptions(difficulties);
     }
 
+    // populates the skins dropdown list
     public void populateSkinsList()
     {
         skinDropdown.AddOptions(skins);
