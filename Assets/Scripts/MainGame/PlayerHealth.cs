@@ -75,6 +75,20 @@ public class PlayerHealth : MonoBehaviour
             Death ();
         }
     }
+    
+    public void TakeHealth (int amount)
+    {
+        if (currentHealth + amount >= startingHealth)
+        {
+            currentHealth = startingHealth;
+        }
+        else
+        {
+            currentHealth += amount;
+        }
+        // Set the health bar's value to the current health.
+        healthSlider.value = currentHealth;
+    }
 
 
     void Death ()

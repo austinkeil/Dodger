@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProjectileMovement : MonoBehaviour
+public class EvilProjectileMovement : MonoBehaviour
 {
     public float speed;
     public Vector3 dir;
@@ -13,6 +13,7 @@ public class ProjectileMovement : MonoBehaviour
     public int attackDamage = 20;               // The amount of health taken away per attack.
     private ScoreScript score;
 
+    private float chanceOfBeingGood = .2f;
 	// Start is called before the first frame update	
 	void Start()
     {

@@ -12,10 +12,11 @@ public class ProjectileGeneration : MonoBehaviour
     public float rate;
     public Vector3 center = new Vector3(2f, 2.5f, 2.5f);
     public Vector3 size = new Vector3(1f, 5f, 5f);
-    public GameObject Projectileprefab;
+    public GameObject evilProjectilePrefab;
+    public GameObject goodProjectilePrefab;
 	GameObject player;                          // Reference to the player GameObject.
 	PlayerHealth playerHealth;                  // Reference to the player's health.
-
+	public float chanceOfBeingGood = .2f;
 	public Material[] materials;
 
 	private Renderer rend;
@@ -58,19 +59,19 @@ public class ProjectileGeneration : MonoBehaviour
 	    {
 		    case 0 :
 
-			    Projectileprefab.GetComponent<MeshRenderer>().material = materials[0];
+			    evilProjectilePrefab.GetComponent<MeshRenderer>().material = materials[0];
 			    Debug.Log("Setting Skin to 0");
 			    break;
 		    
 		    case 1 :
 
-			    Projectileprefab.GetComponent<MeshRenderer>().material = materials[1];
+			    evilProjectilePrefab.GetComponent<MeshRenderer>().material = materials[1];
 			    
 			    break;
 		    
 		    case 2 :
 
-			    Projectileprefab.GetComponent<MeshRenderer>().material = materials[2];
+			    evilProjectilePrefab.GetComponent<MeshRenderer>().material = materials[2];
 			    
 			    break;
 		    
@@ -90,9 +91,18 @@ public class ProjectileGeneration : MonoBehaviour
 
     public void SpawnProjectile()
     {
-        Vector3 pos = transform.localPosition + center + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2),
-                          Random.Range(-size.z / 2, size.z / 2));
-        Instantiate(Projectileprefab, pos, Quaternion.identity);
+	    Vector3 pos = transform.localPosition + center + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2),
+		                  Random.Range(-size.z / 2, size.z / 2));
+        
+	    float goodOrEvil = Random.Range(0f, 1f);
+	    if (goodOrEvil < chanceOfBeingGood)
+	    {
+		    Instantiate(goodProjectilePrefab, pos, Quaternion.identity);
+	    }
+	    else
+	    {
+		    Instantiate(evilProjectilePrefab, pos, Quaternion.identity);
+	    }
     }
 
     private void OnDrawGizmosSelected()
