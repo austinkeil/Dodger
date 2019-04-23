@@ -3443,7 +3443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rate: 0.3
   center: {x: 2, y: 2.5, z: 2.5}
-  size: {x: 1, y: 4.5, z: 4.5}
+  size: {x: 1, y: 4, z: 4}
   evilProjectilePrefab: {fileID: 1365263897754131095, guid: e4fc50fdfc54beb40bff650578f3487f,
     type: 3}
   goodProjectilePrefab: {fileID: 693840045841786713, guid: 18be65d82df319746bcf1656c6751593,

@@ -11,7 +11,7 @@ public class ProjectileGeneration : MonoBehaviour
 	enum Difficulty {EASY = 0, NORMAL, HARD};
     public float rate;
     public Vector3 center = new Vector3(2f, 2.5f, 2.5f);
-    public Vector3 size = new Vector3(1f, 5f, 5f);
+    public Vector3 size = new Vector3(1f, 4f, 4f);
     public GameObject evilProjectilePrefab;
     public GameObject goodProjectilePrefab;
 	GameObject player;                          // Reference to the player GameObject.
