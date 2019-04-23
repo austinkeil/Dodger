@@ -60,19 +60,20 @@ public class ProjectileGeneration : MonoBehaviour
 		    case 0 :
 
 			    evilProjectilePrefab.GetComponent<MeshRenderer>().material = materials[0];
+			    
 			    Debug.Log("Setting Skin to 0");
 			    break;
 		    
 		    case 1 :
 
 			    evilProjectilePrefab.GetComponent<MeshRenderer>().material = materials[1];
-			    
+			    player.GetComponent<MeshRenderer>().material = materials[3];
 			    break;
 		    
 		    case 2 :
 
 			    evilProjectilePrefab.GetComponent<MeshRenderer>().material = materials[2];
-			    
+			    player.GetComponent<MeshRenderer>().material = materials[4];
 			    break;
 		    
 		    

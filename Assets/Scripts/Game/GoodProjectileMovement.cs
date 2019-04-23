@@ -48,6 +48,7 @@ public class GoodProjectileMovement : MonoBehaviour
 		if (col.gameObject.name == "Player"){
 			Debug.Log("Good Collision detected!");
 			playerHealth.TakeHealth(attackDamage);
+			Destroy(gameObject);
 		}
 	}
 	

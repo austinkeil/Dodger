@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class ScoreScript : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ScoreScript : MonoBehaviour
     public InputField playerName;
     // the panel that holds the input field
     public GameObject playerNamePanel;
+
+    private string[] devNames = {"Selah", "Austin", "Joseph", "Trevor"};
 
 
     // Start is called before the first frame update
@@ -46,8 +49,22 @@ public class ScoreScript : MonoBehaviour
 
         Debug.Log("score almost set");
         // saves the score and name in preferences
+        
+        
         PlayerPrefs.SetString("Score" + (index + 1).ToString(), scoreNum.ToString());
-        PlayerPrefs.SetString("Name" + (index + 1).ToString(), playerName.text);
+
+        if (playerName.text.Length == 0)
+        {
+            
+            PlayerPrefs.SetString("Name" + (index + 1).ToString(), devNames[new Random().Next(4)]);
+            
+        }
+
+        else
+        {
+            PlayerPrefs.SetString("Name" + (index + 1).ToString(), playerName.text);
+        }
+
 
         Debug.Log("Set Score");
 

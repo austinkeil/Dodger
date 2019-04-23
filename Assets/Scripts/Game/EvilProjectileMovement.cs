@@ -50,6 +50,7 @@ public class EvilProjectileMovement : MonoBehaviour
 		if (col.gameObject.name == "Player"){
 			Debug.Log("Collision detected!");
 			playerHealth.TakeDamage(attackDamage);
+			Destroy(gameObject);
 		}
 	}
 	
