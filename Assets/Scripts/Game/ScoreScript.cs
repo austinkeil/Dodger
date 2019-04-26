@@ -32,18 +32,19 @@ public class ScoreScript : MonoBehaviour
         int scoreNum = Convert.ToInt32(score.text);
         
         // playerNamePanel.SetActive(false);
-        
 
+        String difficulty = PlayerPrefs.GetInt("Difficulty").ToString();
+        
         int index = 10;
 
         // uses insertion sort
-        while (scoreNum > Convert.ToInt32(PlayerPrefs.GetString("Score" + index.ToString())) && index > 0)
+        while (scoreNum > Convert.ToInt32(PlayerPrefs.GetString(difficulty + "Score" + index.ToString())) && index > 0)
         {
 
-            PlayerPrefs.SetString("Score" + (index + 1).ToString(),
-                PlayerPrefs.GetString("Score" + (index).ToString()));
+            PlayerPrefs.SetString(difficulty + "Score" + (index + 1).ToString(),
+                PlayerPrefs.GetString(difficulty + "Score" + (index).ToString()));
 
-            PlayerPrefs.SetString("Name" + (index + 1).ToString(), PlayerPrefs.GetString("Name" + (index).ToString()));
+            PlayerPrefs.SetString(difficulty + "Name" + (index + 1).ToString(), PlayerPrefs.GetString(difficulty + "Name" + (index).ToString()));
             index--;
         }
 
@@ -51,18 +52,18 @@ public class ScoreScript : MonoBehaviour
         // saves the score and name in preferences
         
         
-        PlayerPrefs.SetString("Score" + (index + 1).ToString(), scoreNum.ToString());
+        PlayerPrefs.SetString(difficulty + "Score" + (index + 1).ToString(), scoreNum.ToString());
 
         if (playerName.text.Length == 0)
         {
             
-            PlayerPrefs.SetString("Name" + (index + 1).ToString(), devNames[new Random().Next(4)]);
+            PlayerPrefs.SetString(difficulty + "Name" + (index + 1).ToString(), devNames[new Random().Next(4)]);
             
         }
 
         else
         {
-            PlayerPrefs.SetString("Name" + (index + 1).ToString(), playerName.text);
+            PlayerPrefs.SetString(difficulty + "Name" + (index + 1).ToString(), playerName.text);
         }
 
 
@@ -78,10 +79,11 @@ public class ScoreScript : MonoBehaviour
     int scoreNum = Convert.ToInt32(score.text);
     Debug.Log("entering score saver");
 
+    String difficulty = PlayerPrefs.GetInt("Difficulty").ToString();
     // gets player health object to change death text
 
         
-    if (Convert.ToInt32(PlayerPrefs.GetString("Score10")) > scoreNum)return;
+    if (Convert.ToInt32(PlayerPrefs.GetString(difficulty +"Score10")) > scoreNum)return;
     
     Debug.Log("Score in top 10");
     PlayerHealth playerHealth =

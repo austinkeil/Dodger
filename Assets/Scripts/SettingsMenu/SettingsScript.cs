@@ -14,6 +14,8 @@ public class SettingsScript : MonoBehaviour
     List<string> difficulties = new List<string>() {"Easy", "Normal", "Hard"};
 
     List<string> skins = new List<string>() {"Pies", "Poop", "Spooky"};
+
+    public Slider sound_volume;
     
     void Start()
     {
@@ -21,6 +23,8 @@ public class SettingsScript : MonoBehaviour
         populateSkinsList();
         
         populateDifficultyList();
+
+        sound_volume.value = PlayerPrefs.GetFloat("Sound");
         
         // starts the dropdown menu items at what they are currently set to
         if (PlayerPrefs.GetInt("Difficulty") != null) difficultyDropdown.value = PlayerPrefs.GetInt("Difficulty");
@@ -67,4 +71,11 @@ public class SettingsScript : MonoBehaviour
         skinDropdown.AddOptions(skins);
     }
 
+    public void SoundLevelChanged()
+    {
+        PlayerPrefs.SetFloat("Sound", sound_volume.value);
+        
+        
+    }
+    
 }

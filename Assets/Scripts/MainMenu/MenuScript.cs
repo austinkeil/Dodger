@@ -8,17 +8,25 @@ public class MenuScript : MonoBehaviour
 
     void Start()
     {
+        
+        if(!PlayerPrefs.HasKey("Difficulty")) PlayerPrefs.SetInt("Difficulty", 0);
+        if(!PlayerPrefs.HasKey("Sound"))PlayerPrefs.SetFloat("Sound", 1f);
+        PlayerPrefs.SetInt("LeaderBoard", PlayerPrefs.GetInt("Difficulty"));
         // checks to see if the leaderboard has any values
-        if (!PlayerPrefs.HasKey("Name1"))
+        if (!PlayerPrefs.HasKey("0Name1"))
         {
-            for (int i = 0; i < 11; ++i)
+            for (int j = 0; j < 3; j++)
             {
-                PlayerPrefs.SetString("Name" + i.ToString(), "Player");
-                PlayerPrefs.SetString("Score" + i.ToString(), "0");
-                
-                
-            }
 
+
+                for (int i = 0; i < 11; ++i)
+                {
+                    PlayerPrefs.SetString(j.ToString() + "Name" + i.ToString(), "Player");
+                    PlayerPrefs.SetString(j.ToString() + "Score" + i.ToString(), "0");
+
+
+                }
+            }
         }
 
 

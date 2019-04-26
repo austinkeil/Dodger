@@ -14,10 +14,12 @@ public class LeaderBoardScript : MonoBehaviour
     public Color scoreColor;
     public int linespacing = 25;
     public int columnSpacing = 400;
-    
-        
+    public Dropdown leaderBoardDropdown;
+
+    private List<GameObject> textList = new List<GameObject>();
     void Start()
     {
+        if (PlayerPrefs.GetInt("LeaderBoard") != null) leaderBoardDropdown.value = PlayerPrefs.GetInt("LeaderBoard");
         GenerateLeaderBoard();
 
     }
@@ -25,13 +27,15 @@ public class LeaderBoardScript : MonoBehaviour
 
     void GenerateLeaderBoard()
     {
-        String nameKey = "Name";
-        String scoreKey = "Score";
+        
+        Debug.Log("generating leaderboard");
+        String nameKey = PlayerPrefs.GetInt("LeaderBoard").ToString() + "Name";
+        String scoreKey = PlayerPrefs.GetInt("LeaderBoard").ToString() + "Score";
 
         
         
-        generateText("Name", 0 , -1, 30);
-        generateText("High Score", 1 , -1, 30);
+        GenerateText("Name", 0 , -1, 30);
+        GenerateText("High Score", 1 , -1, 30);
         
 
 
@@ -39,21 +43,23 @@ public class LeaderBoardScript : MonoBehaviour
         {
             if (PlayerPrefs.HasKey(nameKey + i.ToString()))
             {
-                generateText(PlayerPrefs.GetString(nameKey + i.ToString()),0,i, 20);
+                GenerateText(PlayerPrefs.GetString(nameKey + i.ToString()),0,i, 20);
 
-                generateText(PlayerPrefs.GetString(scoreKey + i.ToString()),1,i, 20);
-                
+                GenerateText(PlayerPrefs.GetString(scoreKey + i.ToString()),1,i, 20);
+                Debug.Log("score displayed");
             }
 
         }
     }
 
     // creates a text object and places it in the column and lin
-    void generateText(String s, int column, int line, int size)
+    void GenerateText(String s, int column, int line, int size)
     {
         
         GameObject textObject = new GameObject() ;
-
+        
+        Debug.Log("Creating Text object");
+        
         textObject.transform.parent = thisCanvas.transform;
         
         Text text = textObject.AddComponent<Text>();
@@ -68,6 +74,7 @@ public class LeaderBoardScript : MonoBehaviour
         rectTransform.localPosition = new Vector3(-200 + columnSpacing * column, 100 - linespacing * (line), 0);
         rectTransform.sizeDelta = new Vector2(160, 40);
         
+        textList.Add(textObject);
         
     }
 
@@ -76,8 +83,8 @@ public class LeaderBoardScript : MonoBehaviour
     {
         for (int i = 0; i < 11; ++i)
         {
-            PlayerPrefs.SetString("Name" + i.ToString(), "Player");
-            PlayerPrefs.SetString("Score" + i.ToString(), "0");
+            PlayerPrefs.SetString(PlayerPrefs.GetInt("LeaderBoard").ToString() + "Name" + i.ToString(), "Player");
+            PlayerPrefs.SetString(PlayerPrefs.GetInt("LeaderBoard").ToString() + "Score" + i.ToString(), "0");
                 
                 
         }
@@ -94,6 +101,31 @@ public class LeaderBoardScript : MonoBehaviour
         
     }
 
+    public void LeaderBoardMenuChanged(int index)
+    {
+
+        Debug.Log("Changing leaderboard");
+        PlayerPrefs.SetInt("LeaderBoard", index);
+        //SceneManager.LoadScene(3);
+
+        deleteList();
+        GenerateLeaderBoard();
+        
+    }
+
+    public void deleteList()
+    {
+
+        if (textList.Count == 0) return;
+        foreach (GameObject textObject in textList)
+        {
+            Destroy(textObject);
+            
+        }
+
+
+
+    }
 
 
 }

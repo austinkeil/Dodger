@@ -2,14 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseScript : MonoBehaviour
 {
     
     public GameObject pauseMenu;
     public bool isPaused;
-    
+
+
+    public Slider sound_volume;
+
+    public AudioSource sound;
     // Start is called before the first frame update
+
+
+    void Start()
+    {
+        sound = GameObject.FindGameObjectWithTag("ProjectileGenerationArea").GetComponent<AudioSource>();
+        sound_volume.value = PlayerPrefs.GetFloat("Sound");
+        
+    }
 
     void Update()
     {
@@ -63,6 +76,13 @@ public class PauseScript : MonoBehaviour
         // restarts the game or goes to the main menu
         SceneManager.LoadScene(sceneIndex);
         
+    }
+    
+    public void SoundLevelChanged()
+    {
+        PlayerPrefs.SetFloat("Sound", sound_volume.value);
+        sound.volume = sound_volume.value;
+
     }
 
 }
