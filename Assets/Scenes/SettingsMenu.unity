@@ -3101,6 +3101,8 @@ MonoBehaviour:
   difficultyDropdown: {fileID: 266871142}
   skinDropdown: {fileID: 2032353605}
   sound_volume: {fileID: 763347538}
+  SoundObject: {fileID: 3964791762242296229, guid: d3597b2b11a5b5349a0dc365476a8575,
+    type: 3}
 --- !u!1 &1971863392
 GameObject:
   m_ObjectHideFlags: 0

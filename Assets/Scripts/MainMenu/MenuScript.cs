@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
 
+    public GameObject soundObject;
+    
     void Start()
     {
-        
+        Instantiate(soundObject);
         if(!PlayerPrefs.HasKey("Difficulty")) PlayerPrefs.SetInt("Difficulty", 0);
         if(!PlayerPrefs.HasKey("Sound"))PlayerPrefs.SetFloat("Sound", 1f);
         PlayerPrefs.SetInt("LeaderBoard", PlayerPrefs.GetInt("Difficulty"));

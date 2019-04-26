@@ -1476,7 +1476,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2027043697}
         m_MethodName: ResetScores
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1790,6 +1790,8 @@ MonoBehaviour:
   linespacing: 25
   columnSpacing: 400
   leaderBoardDropdown: {fileID: 2041670590}
+  SoundObject: {fileID: 3964791762242296229, guid: d3597b2b11a5b5349a0dc365476a8575,
+    type: 3}
 --- !u!1 &2034524259
 GameObject:
   m_ObjectHideFlags: 0

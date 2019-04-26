@@ -15,10 +15,11 @@ public class LeaderBoardScript : MonoBehaviour
     public int linespacing = 25;
     public int columnSpacing = 400;
     public Dropdown leaderBoardDropdown;
-
+    public GameObject SoundObject;
     private List<GameObject> textList = new List<GameObject>();
     void Start()
     {
+        Instantiate(SoundObject);
         if (PlayerPrefs.GetInt("LeaderBoard") != null) leaderBoardDropdown.value = PlayerPrefs.GetInt("LeaderBoard");
         GenerateLeaderBoard();
 
@@ -79,7 +80,7 @@ public class LeaderBoardScript : MonoBehaviour
     }
 
     // Resets all of the leader boards
-    public void ResetScores(int sceneIndex)
+    public void ResetScores()
     {
         for (int i = 0; i < 11; ++i)
         {
@@ -89,7 +90,8 @@ public class LeaderBoardScript : MonoBehaviour
                 
         }
         
-        SceneManager.LoadScene(sceneIndex);
+        deleteList();
+        GenerateLeaderBoard();
         
         
     }

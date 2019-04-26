@@ -13,13 +13,13 @@ public class PauseScript : MonoBehaviour
 
     public Slider sound_volume;
 
-    public AudioSource sound;
+    private AudioSource sound;
     // Start is called before the first frame update
 
 
     void Start()
     {
-        sound = GameObject.FindGameObjectWithTag("ProjectileGenerationArea").GetComponent<AudioSource>();
+        sound = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioSource>();
         sound_volume.value = PlayerPrefs.GetFloat("Sound");
         
     }

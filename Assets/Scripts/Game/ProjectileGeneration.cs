@@ -19,15 +19,14 @@ public class ProjectileGeneration : MonoBehaviour
 	public float chanceOfBeingGood = .2f;
 	public Material[] materials;
 
-	public AudioSource sound;
+	public GameObject SoundObject;
 	
 	private Renderer rend;
 	
     // Start is called before the first frame update
     void Start()
     {
-
-	    sound.volume = PlayerPrefs.GetFloat("Sound");
+	    Instantiate(SoundObject);
 		player = GameObject.FindGameObjectWithTag("Player");
 		playerHealth = player.GetComponent<PlayerHealth>();
 		if (PlayerPrefs.GetInt("Skin") != null)SetSkin();

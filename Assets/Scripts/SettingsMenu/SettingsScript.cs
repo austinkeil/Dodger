@@ -15,10 +15,17 @@ public class SettingsScript : MonoBehaviour
 
     List<string> skins = new List<string>() {"Pies", "Poop", "Spooky"};
 
+    private AudioSource sound;
+    
     public Slider sound_volume;
+
+    public GameObject SoundObject;
     
     void Start()
     {
+        Instantiate(SoundObject);
+
+        sound = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioSource>();
         
         populateSkinsList();
         
@@ -74,8 +81,8 @@ public class SettingsScript : MonoBehaviour
     public void SoundLevelChanged()
     {
         PlayerPrefs.SetFloat("Sound", sound_volume.value);
-        
-        
+        sound.volume = sound_volume.value;
+        Debug.Log("Sound Level changed");
     }
     
 }
