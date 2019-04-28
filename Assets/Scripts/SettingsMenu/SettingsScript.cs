@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,6 +26,7 @@ public class SettingsScript : MonoBehaviour
     {
         Instantiate(SoundObject);
 
+        //I keep getting a null reference exception for this line:
         sound = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioSource>();
         
         populateSkinsList();
@@ -34,9 +36,15 @@ public class SettingsScript : MonoBehaviour
         sound_volume.value = PlayerPrefs.GetFloat("Sound");
         
         // starts the dropdown menu items at what they are currently set to
+        //String.IsNullOrEmpty() will actually check if the int is null, ints otherwise aren't null in c#
+        if (!String.IsNullOrEmpty(PlayerPrefs.GetInt("Difficulty").ToString())) difficultyDropdown.value = PlayerPrefs.GetInt("Difficulty");
+        
+        if (!String.IsNullOrEmpty(PlayerPrefs.GetInt("Skin").ToString())) skinDropdown.value = PlayerPrefs.GetInt("Skin");
+        /*
         if (PlayerPrefs.GetInt("Difficulty") != null) difficultyDropdown.value = PlayerPrefs.GetInt("Difficulty");
         
         if (PlayerPrefs.GetInt("Skin") != null) skinDropdown.value = PlayerPrefs.GetInt("Skin");
+        */
     }
     
     

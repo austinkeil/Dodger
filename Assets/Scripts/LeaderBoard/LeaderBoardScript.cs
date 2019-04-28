@@ -47,19 +47,19 @@ public class LeaderBoardScript : MonoBehaviour
                 GenerateText(PlayerPrefs.GetString(nameKey + i.ToString()),0,i, 20);
 
                 GenerateText(PlayerPrefs.GetString(scoreKey + i.ToString()),1,i, 20);
-                Debug.Log("score displayed");
+                //Debug.Log("score displayed");
             }
 
         }
     }
 
-    // creates a text object and places it in the column and lin
+    // creates a text object and places it in the column and line
     void GenerateText(String s, int column, int line, int size)
     {
         
         GameObject textObject = new GameObject() ;
         
-        Debug.Log("Creating Text object");
+        //Debug.Log("Creating Text object");
         
         textObject.transform.parent = thisCanvas.transform;
         
