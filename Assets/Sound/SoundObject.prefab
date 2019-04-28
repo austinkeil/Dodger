@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8733732471455048335}
   m_Layer: 0
   m_Name: SoundObject
-  m_TagString: Sound
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,16 +42,16 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ff14573d64c4fc74bb6b853fd9902660, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e6c8879d97c1662429f892f6695950b4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.76428574
+  m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 2.34
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -88,7 +88,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.375
       inSlope: 0
       outSlope: 0
       tangentMode: 0
