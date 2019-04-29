@@ -112,6 +112,25 @@ namespace Tests
             Assert.AreEqual(position, expectedPosition);
                       
         }
+        [UnityTest]
+        public IEnumerator StartGameWorks()
+        {
+            Debug.Log("test has started");
+            SceneManager.LoadScene("MenuScene", LoadSceneMode.Single);
+            yield return null;
+            Debug.Log("loaded menu scene");
+            var startButton = GameObject.FindGameObjectWithTag("StartButton").GetComponent<Button>();
+            Debug.Log("found start button");
+            Debug.Log(startButton);
+            yield return null;
+            startButton.onClick.Invoke();
+            yield return null;
+            Scene current = SceneManager.GetActiveScene();
+            String currentName = current.name;
+            String expectedName = "GameScene";
+            Assert.AreEqual(expectedName, currentName);
+
+        }
 
     }
     
