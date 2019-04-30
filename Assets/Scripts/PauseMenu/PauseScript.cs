@@ -10,6 +10,7 @@ public class PauseScript : MonoBehaviour
     public GameObject pauseMenu;
     public bool isPaused;
 
+    public GameObject soundObject;
 
     public Slider sound_volume;
 
@@ -19,7 +20,7 @@ public class PauseScript : MonoBehaviour
 
     void Start()
     {
-        sound = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioSource>();
+        sound = soundObject.GetComponent<AudioSource>();
         sound_volume.value = PlayerPrefs.GetFloat("Sound");
         
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -604,6 +604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 265753664}
   isPaused: 0
+  soundObject: {fileID: 3964791762242296229, guid: d3597b2b11a5b5349a0dc365476a8575,
+    type: 3}
   sound_volume: {fileID: 655281640}
 --- !u!1 &126924990
 GameObject:
@@ -3879,7 +3881,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 3bedf47a4ce54fc478b71775080b177b, type: 2}
   - {fileID: 2100000, guid: 3bedf47a4ce54fc478b71775080b177b, type: 2}
   - {fileID: 2100000, guid: 3bedf47a4ce54fc478b71775080b177b, type: 2}
-  SoundObject: {fileID: 126924990}
+  SoundObject: {fileID: 3964791762242296229, guid: d3597b2b11a5b5349a0dc365476a8575,
+    type: 3}
 --- !u!4 &2044540159
 Transform:
   m_ObjectHideFlags: 0

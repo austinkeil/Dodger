@@ -14,6 +14,15 @@ public class ScoreScript : MonoBehaviour
     // the panel that holds the input field
     public GameObject playerNamePanel;
 
+    private ProjectileGeneration difficulty;
+
+    void Start()
+    {
+        
+        
+        
+    }
+
     private string[] devNames = {"Selah", "Austin", "Joseph", "Trevor"};
 
 

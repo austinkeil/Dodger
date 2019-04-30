@@ -19,6 +19,8 @@ public class ProjectileGeneration : MonoBehaviour
 	public float chanceOfBeingGood = .2f;
 	public Material[] materials;
 
+
+	
 	public GameObject SoundObject;
 	
 	private Renderer rend;
@@ -31,7 +33,9 @@ public class ProjectileGeneration : MonoBehaviour
 		playerHealth = player.GetComponent<PlayerHealth>();
 		if (PlayerPrefs.GetInt("Skin") != null)SetSkin();
 		if (PlayerPrefs.GetInt("Difficulty") != null)SetDifficulty();
-        InvokeRepeating("SpawnProjectile", 0, rate);
+		
+
+        InvokeRepeating("SpawnProjectile", 1, rate);
     }
 
 

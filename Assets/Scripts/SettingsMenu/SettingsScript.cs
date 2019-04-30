@@ -16,23 +16,27 @@ public class SettingsScript : MonoBehaviour
 
     List<string> skins = new List<string>() {"Pies", "Poop", "Spooky"};
 
+    public GameObject SoundObject;
+    
     private AudioSource sound;
     
     public Slider sound_volume;
 
-    public GameObject SoundObject;
+
     
     void Start()
     {
         Instantiate(SoundObject);
 
         //I keep getting a null reference exception for this line:
-        sound = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioSource>();
+        
         
         populateSkinsList();
         
         populateDifficultyList();
 
+        sound = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioSource>();
+        
         sound_volume.value = PlayerPrefs.GetFloat("Sound");
         
         // starts the dropdown menu items at what they are currently set to
@@ -45,6 +49,9 @@ public class SettingsScript : MonoBehaviour
         
         if (PlayerPrefs.GetInt("Skin") != null) skinDropdown.value = PlayerPrefs.GetInt("Skin");
         */
+        Debug.Log("sets audio source to variable");
+
+        
     }
     
     
@@ -90,7 +97,7 @@ public class SettingsScript : MonoBehaviour
     {
         PlayerPrefs.SetFloat("Sound", sound_volume.value);
         sound.volume = sound_volume.value;
-        Debug.Log("Sound Level changed");
+        //Debug.Log("Sound Level changed");
     }
     
 }
