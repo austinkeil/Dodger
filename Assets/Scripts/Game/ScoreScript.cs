@@ -14,13 +14,17 @@ public class ScoreScript : MonoBehaviour
     // the panel that holds the input field
     public GameObject playerNamePanel;
 
-    private ProjectileGeneration difficulty;
+    public GameObject projectileArea;
+
+    private ProjectileGeneration projectileGeneration;
+    
+
 
     void Start()
     {
-        
-        
-        
+        projectileGeneration = projectileArea.GetComponent<ProjectileGeneration>();
+
+
     }
 
     private string[] devNames = {"Selah", "Austin", "Joseph", "Trevor"};
@@ -29,8 +33,19 @@ public class ScoreScript : MonoBehaviour
     // Start is called before the first frame update
     public void IncreaseScore()
     {
-        score.text = (Convert.ToInt32(score.text) + 1).ToString();
+
+        int scoreNum = Convert.ToInt32(score.text) + 1;
+        score.text = scoreNum.ToString();
         Debug.Log("Score Increased!");
+
+        if (scoreNum % 20 == 0)
+        {
+            projectileGeneration.IncreaseDifficulty();
+
+
+
+
+        }
 
     }
 
@@ -105,5 +120,7 @@ public class ScoreScript : MonoBehaviour
     playerHealth.deathText.text = "NEW HIGHSCORE\nMOTHERFUCKER";
         
     }
+
+
 
 }

@@ -23,5 +23,18 @@ public class SoundScript : MonoBehaviour
     }
     
 
+    public void InvertMusic()
+    {
+        music.pitch = -1f;
+
+    }
+
+    public void NormalMusic()
+    {
+        music.pitch = 1f;
+        
+        
+
+    }
 
 }

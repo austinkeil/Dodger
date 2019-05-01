@@ -19,6 +19,7 @@ public class ProjectileGeneration : MonoBehaviour
 	public float chanceOfBeingGood = .2f;
 	public Material[] materials;
 
+	public GameObject[] walls;
 
 	
 	public GameObject SoundObject;
@@ -35,7 +36,7 @@ public class ProjectileGeneration : MonoBehaviour
 		if (PlayerPrefs.GetInt("Difficulty") != null)SetDifficulty();
 		
 
-        InvokeRepeating("SpawnProjectile", 1, rate);
+        InvokeRepeating("SpawnProjectile", 0, rate);
     }
 
 
@@ -67,20 +68,27 @@ public class ProjectileGeneration : MonoBehaviour
 		    case 0 :
 
 			    evilProjectilePrefab.GetComponent<MeshRenderer>().material = materials[0];
-			    
+			    player.GetComponent<MeshRenderer>().material = materials[7];
 			    Debug.Log("Setting Skin to 0");
+			    //SoundObject.GetComponent<SoundScript>().NormalMusic();
 			    break;
 		    
 		    case 1 :
 
 			    evilProjectilePrefab.GetComponent<MeshRenderer>().material = materials[1];
 			    player.GetComponent<MeshRenderer>().material = materials[3];
+			    walls[0].GetComponent<MeshRenderer>().material = materials[6];
+			    walls[1].GetComponent<MeshRenderer>().material = materials[6];
+			    //SoundObject.GetComponent<SoundScript>().NormalMusic();
 			    break;
 		    
 		    case 2 :
 
 			    evilProjectilePrefab.GetComponent<MeshRenderer>().material = materials[2];
 			    player.GetComponent<MeshRenderer>().material = materials[4];
+			    walls[0].GetComponent<MeshRenderer>().material = materials[5];
+			    walls[1].GetComponent<MeshRenderer>().material = materials[5];
+			   // SoundObject.GetComponent<SoundScript>().InvertMusic();
 			    break;
 		    
 		    
@@ -118,5 +126,15 @@ public class ProjectileGeneration : MonoBehaviour
 	    
         Gizmos.color = new Color(1,0,0,5f);
         Gizmos.DrawCube(transform.localPosition + center, size);
+    }
+
+    public void IncreaseDifficulty()
+    {
+	    rate = rate / 1;
+	    CancelInvoke();
+	    InvokeRepeating("SpawnProjectile", 0, rate);
+	    
+
+
     }
 }

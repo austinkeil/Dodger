@@ -17,21 +17,29 @@ namespace Tests
         public IEnumerator MonoBehaviourTest_Works()
         {
             yield return new MonoBehaviourTest<MyMonoBehaviourTest>();
+
         }
     }
     
     public class MyMonoBehaviourTest : MonoBehaviour, IMonoBehaviourTest
     { 
         //boiler plate code from unity manuel
+        
+        public float timeLeft = 5f;
+        
         private int frameCount;
         public bool IsTestFinished
         {
-            get { return frameCount > 10; }
+          //  get { return frameCount > 10; }
+           get { return timeLeft < 0; }
         }
 
          void Update()
          {
             frameCount++;
+            
+            timeLeft -= Time.deltaTime;
+            
          }
         
         [UnityTest]
@@ -113,7 +121,7 @@ namespace Tests
                       
         }
         [UnityTest]
-        public IEnumerator StartGameWorks()
+        public IEnumerator TestStartGameWorks()
         {
             Debug.Log("test has started");
             SceneManager.LoadScene("MenuScene", LoadSceneMode.Single);
@@ -129,6 +137,65 @@ namespace Tests
             String currentName = current.name;
             String expectedName = "GameScene";
             Assert.AreEqual(expectedName, currentName);
+
+        }
+        
+        
+        [UnityTest]
+        public IEnumerator TestSkinChanged()
+        {
+            SceneManager.LoadScene("GameScene");
+            
+            yield return null;
+
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+            player.GetComponent<Rigidbody>().isKinematic = true;
+            
+            Material playerMaterial = player.GetComponent<MeshRenderer>().material;
+
+            yield return null;
+
+            GameObject evilProjectile;
+            while (GameObject.FindGameObjectWithTag("EvilProjectile") == null)
+            {
+                
+
+                yield return new WaitForSeconds(1);
+
+            }
+            
+            evilProjectile = GameObject.FindGameObjectWithTag("EvilProjectile");
+
+            Material projectileMaterial = evilProjectile.GetComponent<MeshRenderer>().material;
+            
+            SceneManager.LoadScene("SettingsMenu");
+            yield return null;
+
+            Dropdown skinDropdown = GameObject.FindGameObjectWithTag("SkinDropdown").GetComponent<Dropdown>();
+
+            // change the dropdown menu to the next item mod # of items on menu
+            skinDropdown.onValueChanged.Invoke(PlayerPrefs.GetInt("Skin") + 1 % skinDropdown.options.Count);          
+            
+            SceneManager.LoadScene("GameScene");
+            
+            yield return null;
+            
+            player = GameObject.FindGameObjectWithTag("Player");
+
+
+            while (GameObject.FindGameObjectWithTag("EvilProjectile") == null)
+            {
+                
+
+                yield return new WaitForSeconds(1);
+
+            }
+            evilProjectile = GameObject.FindGameObjectWithTag("EvilProjectile");
+            
+            Assert.AreNotEqual(playerMaterial, player.GetComponent<MeshRenderer>().material);
+
+            Assert.AreNotEqual(projectileMaterial, evilProjectile.GetComponent<MeshRenderer>().material);
 
         }
 
@@ -153,5 +220,32 @@ namespace Tests
             // Use yield to skip a frame.
             yield return null;
         }
+        
+        
+        
+        
     }
+
+    /*public class TestSkin : MonoBehaviour, IMonoBehaviourTest
+    {
+
+        public float timeLeft = 30f;
+        public bool IsTestFinished
+        {
+            get { return timeLeft > 10; }
+        }
+        
+
+     
+        void Update()
+        {
+            timeLeft -= Time.deltaTime;
+        }
+
+        
+
+
+    }
+*/
+
 }

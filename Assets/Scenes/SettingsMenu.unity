@@ -3100,9 +3100,9 @@ MonoBehaviour:
   settingsMenu: {fileID: 1629030982}
   difficultyDropdown: {fileID: 266871142}
   skinDropdown: {fileID: 2032353605}
-  sound_volume: {fileID: 763347538}
   SoundObject: {fileID: 3964791762242296229, guid: d3597b2b11a5b5349a0dc365476a8575,
     type: 3}
+  sound_volume: {fileID: 763347538}
 --- !u!1 &1971863392
 GameObject:
   m_ObjectHideFlags: 0
@@ -3223,10 +3223,9 @@ GameObject:
   - component: {fileID: 2032353607}
   - component: {fileID: 2032353606}
   - component: {fileID: 2032353605}
-  - component: {fileID: 2032353608}
   m_Layer: 5
   m_Name: SkinDropdown
-  m_TagString: Untagged
+  m_TagString: SkinDropdown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3351,18 +3350,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032353603}
   m_CullTransparentMesh: 0
---- !u!114 &2032353608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032353603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81226349149003a4e84353ad38c66f9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2040022285
 GameObject:
   m_ObjectHideFlags: 0
