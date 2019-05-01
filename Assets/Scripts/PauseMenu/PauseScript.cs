@@ -20,7 +20,7 @@ public class PauseScript : MonoBehaviour
 
     void Start()
     {
-        sound = soundObject.GetComponent<AudioSource>();
+        sound = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioSource>();
         sound_volume.value = PlayerPrefs.GetFloat("Sound");
         
     }

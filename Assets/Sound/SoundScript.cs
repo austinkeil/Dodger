@@ -25,15 +25,27 @@ public class SoundScript : MonoBehaviour
 
     public void InvertMusic()
     {
+
         music.pitch = -1f;
+
+        Debug.Log("Stopping Sound?");
 
     }
 
     public void NormalMusic()
     {
+
         music.pitch = 1f;
-        
-        
+
+        Debug.Log("Stopping Sound?");
+
+
+    }
+
+    public void IncreasePitch()
+    {
+
+        music.pitch *= 1.005f;
 
     }
 

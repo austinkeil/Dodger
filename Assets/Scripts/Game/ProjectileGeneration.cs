@@ -21,6 +21,7 @@ public class ProjectileGeneration : MonoBehaviour
 
 	public GameObject[] walls;
 
+	private SoundScript sound;
 	
 	public GameObject SoundObject;
 	
@@ -30,8 +31,10 @@ public class ProjectileGeneration : MonoBehaviour
     void Start()
     {
 	    Instantiate(SoundObject);
+	    
 		player = GameObject.FindGameObjectWithTag("Player");
 		playerHealth = player.GetComponent<PlayerHealth>();
+		sound = GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundScript>();
 		if (PlayerPrefs.GetInt("Skin") != null)SetSkin();
 		if (PlayerPrefs.GetInt("Difficulty") != null)SetDifficulty();
 		
@@ -45,15 +48,15 @@ public class ProjectileGeneration : MonoBehaviour
 
 	    switch (PlayerPrefs.GetInt("Difficulty"))
 	    {
-		    case (int)Difficulty.EASY : rate = 1f;
+		    case (int)Difficulty.EASY : rate = 0.4f;
 			    
 			    break;
 		    
-		    case (int)Difficulty.NORMAL : rate = 0.1f;
+		    case (int)Difficulty.NORMAL : rate = 0.25f;
 			    
 			    break;
 		    
-		    case (int)Difficulty.HARD : rate = 0.001f;
+		    case (int)Difficulty.HARD : rate = 0.1f;
 			    
 			    break;
 		    
@@ -63,6 +66,8 @@ public class ProjectileGeneration : MonoBehaviour
 
     void SetSkin()
     {
+
+	    
 	    switch (PlayerPrefs.GetInt("Skin"))
 	    {
 		    case 0 :
@@ -70,7 +75,7 @@ public class ProjectileGeneration : MonoBehaviour
 			    evilProjectilePrefab.GetComponent<MeshRenderer>().material = materials[0];
 			    player.GetComponent<MeshRenderer>().material = materials[7];
 			    Debug.Log("Setting Skin to 0");
-			    //SoundObject.GetComponent<SoundScript>().NormalMusic();
+			    sound.NormalMusic();
 			    break;
 		    
 		    case 1 :
@@ -79,7 +84,7 @@ public class ProjectileGeneration : MonoBehaviour
 			    player.GetComponent<MeshRenderer>().material = materials[3];
 			    walls[0].GetComponent<MeshRenderer>().material = materials[6];
 			    walls[1].GetComponent<MeshRenderer>().material = materials[6];
-			    //SoundObject.GetComponent<SoundScript>().NormalMusic();
+			    sound.NormalMusic();
 			    break;
 		    
 		    case 2 :
@@ -88,7 +93,7 @@ public class ProjectileGeneration : MonoBehaviour
 			    player.GetComponent<MeshRenderer>().material = materials[4];
 			    walls[0].GetComponent<MeshRenderer>().material = materials[5];
 			    walls[1].GetComponent<MeshRenderer>().material = materials[5];
-			   // SoundObject.GetComponent<SoundScript>().InvertMusic();
+			    sound.InvertMusic();
 			    break;
 		    
 		    
@@ -130,10 +135,11 @@ public class ProjectileGeneration : MonoBehaviour
 
     public void IncreaseDifficulty()
     {
-	    rate = rate / 1;
+	    rate = rate * .99f;
+	    
 	    CancelInvoke();
 	    InvokeRepeating("SpawnProjectile", 0, rate);
-	    
+	    sound.IncreasePitch();
 
 
     }

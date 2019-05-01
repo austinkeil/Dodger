@@ -96,6 +96,7 @@ public class PlayerHealth : MonoBehaviour
         // Set the death flag so this function won't be called again.
         isDead = true;
 		
+        GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundScript>().NormalMusic();
 		// Change the deathText color to dark red
         deathText.color = deathTextColor;
 

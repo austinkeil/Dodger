@@ -28,6 +28,8 @@ public class SettingsScript : MonoBehaviour
     {
         Instantiate(SoundObject);
 
+        
+        
         //I keep getting a null reference exception for this line:
         
         

@@ -38,7 +38,7 @@ public class ScoreScript : MonoBehaviour
         score.text = scoreNum.ToString();
         Debug.Log("Score Increased!");
 
-        if (scoreNum % 20 == 0)
+        if (scoreNum % 5 == 0)
         {
             projectileGeneration.IncreaseDifficulty();
 
