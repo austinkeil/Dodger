@@ -140,4 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b921c1db5aa364489ff96c22327ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicList:
+  - {fileID: 8300000, guid: a558a584603293747bfb2c14e93531e0, type: 3}
+  - {fileID: 8300000, guid: e6c8879d97c1662429f892f6695950b4, type: 3}
+  - {fileID: 8300000, guid: cfbdbbb91d54fbd4583be4554843ed1c, type: 3}
+  - {fileID: 8300000, guid: db41c38bdb904094f89b19bdede6bd5e, type: 3}
+  - {fileID: 8300000, guid: 03d6ecdc8cfe58743a5580a9c0082014, type: 3}
   music: {fileID: 3011383659552176037}

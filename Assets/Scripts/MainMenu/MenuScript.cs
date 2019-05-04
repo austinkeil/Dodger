@@ -11,6 +11,8 @@ public class MenuScript : MonoBehaviour
     void Start()
     {
         Instantiate(soundObject);
+
+        GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundScript>().ChangeMusic(0);
         if(!PlayerPrefs.HasKey("Difficulty")) PlayerPrefs.SetInt("Difficulty", 0);
         if(!PlayerPrefs.HasKey("Sound"))PlayerPrefs.SetFloat("Sound", 1f);
         PlayerPrefs.SetInt("LeaderBoard", PlayerPrefs.GetInt("Difficulty"));

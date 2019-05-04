@@ -111,12 +111,22 @@ public class PlayerHealth : MonoBehaviour
 		Debug.Log("You died!");
 
         // checks to see if the player got a new high score
-        GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreScript>().CheckScore();
+        ScoreScript scoreScript = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreScript>();
+        
+        scoreScript.CheckScore();
         
         Debug.Log("enabling death menu");
         // Ask if they would like to start again or quit
-        deathMenu.SetActive(true);
         
+        
+        if(!scoreScript.IsNewHighScore())deathMenu.SetActive(true);
+
+        else
+        {
+            
+            
+        }
+
     }   
 
 }

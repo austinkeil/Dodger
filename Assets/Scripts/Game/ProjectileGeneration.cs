@@ -35,8 +35,8 @@ public class ProjectileGeneration : MonoBehaviour
 		player = GameObject.FindGameObjectWithTag("Player");
 		playerHealth = player.GetComponent<PlayerHealth>();
 		sound = GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundScript>();
-		if (PlayerPrefs.GetInt("Skin") != null)SetSkin();
-		if (PlayerPrefs.GetInt("Difficulty") != null)SetDifficulty();
+		if (PlayerPrefs.HasKey("Skin"))SetSkin();
+		if (PlayerPrefs.HasKey("Difficulty"))SetDifficulty();
 		
 
         InvokeRepeating("SpawnProjectile", 0, rate);
@@ -50,13 +50,19 @@ public class ProjectileGeneration : MonoBehaviour
 	    {
 		    case (int)Difficulty.EASY : rate = 0.4f;
 			    
+			    sound.ChangeMusic(2);
+			    
 			    break;
 		    
 		    case (int)Difficulty.NORMAL : rate = 0.25f;
 			    
+			    sound.ChangeMusic(3);
+			    
 			    break;
 		    
 		    case (int)Difficulty.HARD : rate = 0.1f;
+			    
+			    sound.ChangeMusic(4);
 			    
 			    break;
 		    

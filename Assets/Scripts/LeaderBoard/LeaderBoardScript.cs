@@ -23,6 +23,8 @@ public class LeaderBoardScript : MonoBehaviour
         if (PlayerPrefs.GetInt("LeaderBoard") != null) leaderBoardDropdown.value = PlayerPrefs.GetInt("LeaderBoard");
         GenerateLeaderBoard();
 
+        GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundScript>().ChangeMusic(1);
+        
     }
 
 

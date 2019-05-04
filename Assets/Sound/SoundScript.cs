@@ -5,6 +5,11 @@ using UnityEngine;
 public class SoundScript : MonoBehaviour
 {
     public static SoundScript sound;
+
+    public AudioClip[] musicList;
+    
+    
+    
     public AudioSource music;
     // Start is called before the first frame update
     void Awake()
@@ -48,5 +53,15 @@ public class SoundScript : MonoBehaviour
         music.pitch *= 1.005f;
 
     }
+
+    public void ChangeMusic(int musicTrack)
+    {
+        music.clip = musicList[musicTrack];
+
+        music.Play();
+
+
+    }
+
 
 }

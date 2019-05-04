@@ -17,7 +17,8 @@ public class ScoreScript : MonoBehaviour
     public GameObject projectileArea;
 
     private ProjectileGeneration projectileGeneration;
-    
+
+    private bool newHighScore;
 
 
     void Start()
@@ -92,6 +93,8 @@ public class ScoreScript : MonoBehaviour
 
 
         Debug.Log("Set Score");
+        
+        playerNamePanel.SetActive(false);
 
 
     }
@@ -106,8 +109,15 @@ public class ScoreScript : MonoBehaviour
     String difficulty = PlayerPrefs.GetInt("Difficulty").ToString();
     // gets player health object to change death text
 
+
+    if (Convert.ToInt32(PlayerPrefs.GetString(difficulty + "Score10")) > scoreNum)
+    {
+        newHighScore = false;
         
-    if (Convert.ToInt32(PlayerPrefs.GetString(difficulty +"Score10")) > scoreNum)return;
+        return;
+    }
+
+    newHighScore = true;
     
     Debug.Log("Score in top 10");
     PlayerHealth playerHealth =
@@ -117,10 +127,16 @@ public class ScoreScript : MonoBehaviour
     playerNamePanel.SetActive(true);
 
     // displays a different message
-    playerHealth.deathText.text = "NEW HIGHSCORE\nMOTHERFUCKER";
+    playerHealth.deathText.text = "NEW HIGHSCORE";
         
     }
 
+    public bool IsNewHighScore()
+    {
+
+        return newHighScore;
+
+    }
 
 
 }

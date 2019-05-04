@@ -17,6 +17,8 @@ public class PauseScript : MonoBehaviour
     private AudioSource sound;
     // Start is called before the first frame update
 
+    public GameObject deathMenu;
+    
 
     void Start()
     {
@@ -72,8 +74,7 @@ public class PauseScript : MonoBehaviour
     public void DeathMenuButton(int sceneIndex)
     {
         
-        // saves the score
-        GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreScript>().SaveScore();
+        
         // restarts the game or goes to the main menu
         SceneManager.LoadScene(sceneIndex);
         
@@ -84,6 +85,18 @@ public class PauseScript : MonoBehaviour
         PlayerPrefs.SetFloat("Sound", sound_volume.value);
         sound.volume = sound_volume.value;
 
+    }
+
+    public void SubmitNameButton()
+    {
+        
+        // saves the score
+        GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreScript>().SaveScore();
+        
+        deathMenu.SetActive(true);
+        
+        
+        
     }
 
 }
